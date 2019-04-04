@@ -14,17 +14,20 @@ public class Crime {
         mId = UUID.randomUUID();
         mDate = new Date();
     }
-    public UUID getmId() {
+    public UUID getId() {
         return mId;
     }
-    public String getmTitle() {
+    public String getTitle() {
         return mTitle;
     }
-    public void setmTitle(String mTitle) {
-        this.mTitle = mTitle;
+    public void setTitle(String title) {
+        mTitle = title;
     }
-    public Date getmDate() {
+    public Date getDate() {
         return mDate;
+    }
+    public void setDate(Date date) {
+        mDate = date;
     }
     public boolean isSolved() {
         return mSolved;
