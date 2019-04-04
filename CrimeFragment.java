@@ -55,12 +55,12 @@ public class CrimeFragment extends Fragment {
         mDateButton.setEnabled(false);
 
         mSolvedCheckBox = v.findViewById(R.id.crime_solved);
-        mSolvedCheckBox.setOnClickListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                mCrime.setSolved(isChecked);
-                }
-        });
+      //  mSolvedCheckBox.setOnClickListener(new CompoundButton.OnCheckedChangeListener() {
+        //    @Override
+        //    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+         //       mCrime.setSolved(isChecked);
+         //       }
+        // });
         return v;
     }
 }
