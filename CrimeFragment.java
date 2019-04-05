@@ -40,8 +40,8 @@ public class CrimeFragment extends Fragment {
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mCrime.setTitle(CharSequence.toString());
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                mCrime.setTitle(charSequence.toString());
             }
 
             @Override
