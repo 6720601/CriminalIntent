@@ -1,11 +1,13 @@
 package com.ctech.ingalls.criminalintent;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public abstract class SingleFragmentActivity extends AppCompatActivity {
+
+    protected abstract Fragment createFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,10 +18,11 @@ public class MainActivity extends AppCompatActivity {
         Fragment myFragment = fm.findFragmentById(R.id.fragment_container);
 
         if (myFragment == null) {
-            myFragment = new CrimeFragment();
+            myFragment = createFragment();
             fm.beginTransaction()
                     .add(R.id.fragment_container, myFragment)
                     .commit();
         }
     }
 }
+
