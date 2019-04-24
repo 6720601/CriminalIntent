@@ -5,8 +5,12 @@ import android.database.CursorWrapper;
 
 import com.ctech.ingalls.criminalintent.Crime;
 
+import java.util.Date;
+import java.util.UUID;
+
 public class CrimeCursorWrapper extends CursorWrapper {
     public CrimeCursorWrapper(Cursor cursor) {
+
         super(cursor);
     }
 
@@ -15,5 +19,12 @@ public class CrimeCursorWrapper extends CursorWrapper {
         String title = getString(getColumnIndex((CrimeDbSchema.CrimeTable.Columns.TITLE)));
         long date = getLong(getColumnIndex(CrimeDbSchema.CrimeTable.Columns.DATE));
         int isSolved = getInt(getColumnIndex(CrimeDbSchema.CrimeTable.Columns.SOLVED));
+
+        Crime crime = new Crime(UUID.fromString(uuidString));
+        crime.setTitle(title);
+        crime.setDate(new Date(date));
+        crime.setSolved(isSolved == 1);
+
+        return crime;
     }
 }
