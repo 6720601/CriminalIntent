@@ -18,6 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import android.text.format.DateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -83,7 +84,7 @@ public class CrimeFragment extends Fragment {
             }
         });
 
-        mDateButton =v.findViewById(R.id.crime_date);
+        mDateButton = v.findViewById(R.id.crime_date);
         updateDate();
 
         mDateButton.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +107,7 @@ public class CrimeFragment extends Fragment {
         });
         return v;
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != Activity.RESULT_OK) {
@@ -122,4 +124,24 @@ public class CrimeFragment extends Fragment {
         mDateButton.setText(mCrime.getDate().toString());
     }
 
+    private String getCrimeReport() {
+        String solvedString = null;
+        if (mCrime.isSolved()) {
+            solvedString = getString(R.string.crime_report_solved);
+        } else {
+            solvedString = getString(R.string.crime_report_unsolved);
+        }
+        String dateFormat = "EEE, MMM dd";
+        String dateString = DateFormat.format(dateFormat, mCrime.getDate()).toString();
+        String suspect = mCrime.getSuspect();
+        if (suspect == null) {
+            suspect = getString(R.string.crime_report_no_suspect);
+        } else {
+            suspect = getString(R.string.crime_report_suspect, suspect);
+        }
+        String report = getString(R.string.crime_report,
+                mCrime.getTitle(), dateString, solvedString, suspect);
+         return report;
+        }
+    }
 }
